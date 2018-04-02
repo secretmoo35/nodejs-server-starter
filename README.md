@@ -17,11 +17,16 @@
 
 3. Change file "src/modules/{{template}}/models/{{template}}.model.js"
 
-	
 
     var Model = "Template"; // change this to a new module
 	
 
 **Enjoy your project**
+
+**Reference**
+
+- **NODEJS:** https://nodejs.org/en/
+- **Express:** https://expressjs.com/
+- **MongoDB:** https://www.mongodb.com/
 
 ***REMARK** : This template is starter use the mongoDB express nodeJS no front-end template for server only.
