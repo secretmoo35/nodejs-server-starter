@@ -1,4 +1,15 @@
-###Create module .
+#### Install project
+
+1. npm install
+
+#### Run project
+
+1. node server || node server.js || npm start
+
+* Use npm install -g nodemon
+* Run "nodemon server" auto reload.
+
+#### Create module
 
 1. Copy folder "src/modules/template"
 
