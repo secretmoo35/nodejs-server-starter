@@ -1,7 +1,10 @@
 'use strict';
 
-var mongoose = require('mongoose');
 var Model = "Template";
+exports.model = Model;
+
+// use model
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ModelSchema = new Schema({
     name: {
@@ -14,5 +17,3 @@ var ModelSchema = new Schema({
 });
 
 mongoose.model(Model, ModelSchema);
-
-exports.model = Model;
