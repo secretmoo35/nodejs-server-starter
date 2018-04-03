@@ -19,9 +19,7 @@
 
 
     var Model = "Template"; // change this to a new module
-	
 
-**Enjoy your project**
 
 **Reference**
 

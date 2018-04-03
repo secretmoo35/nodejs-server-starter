@@ -9,6 +9,7 @@ exports.getList = function (req, res) {
     Model.find(function (err, datas) {
         if (err) {
             return res.status(400).send({
+                status: 400,
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
@@ -26,6 +27,7 @@ exports.create = function (req, res) {
     mongooseModel.save(function (err, data) {
         if (err) {
             return res.status(400).send({
+                status: 400,
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
@@ -49,6 +51,7 @@ exports.getByID = function (req, res, next, id) {
     Model.findById(id, function (err, data) {
         if (err) {
             return res.status(400).send({
+                status: 400,
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
@@ -72,6 +75,7 @@ exports.update = function (req, res) {
     mongooseModel.save(function (err, data) {
         if (err) {
             return res.status(400).send({
+                status: 400,
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
@@ -87,6 +91,7 @@ exports.delete = function (req, res) {
     req.data.remove(function (err, data) {
         if (err) {
             return res.status(400).send({
+                status: 400,
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
