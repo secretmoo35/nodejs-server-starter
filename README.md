@@ -30,3 +30,10 @@
 - **MongoDB:** https://www.mongodb.com/
 
 ***REMARK** : This template is starter use the mongoDB express nodeJS no front-end template for server only.
+
+
+
+**Log**
+- **03/04/18** 
+    - Change filename
+    - glob require(models & route)
