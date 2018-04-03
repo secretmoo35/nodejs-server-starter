@@ -7,7 +7,9 @@ exports.model = Model;
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ModelSchema = new Schema({
-    name: String,
+    name: {
+        type: String
+    },
     created: {
         type: Date,
         default: Date.now
