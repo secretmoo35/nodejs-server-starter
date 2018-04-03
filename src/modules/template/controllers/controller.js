@@ -19,6 +19,7 @@ exports.getList = function (req, res) {
 
 exports.create = function (req, res) {
     var mongooseModel = new Model(req.body);
+    mongooseModel.updateBy = req.user;
     mongooseModel.save(function (err, data) {
         if (err) {
             return res.status(400).send({
@@ -56,6 +57,8 @@ exports.read = function (req, res) {
 
 exports.update = function (req, res) {
     var mongooseModel = _.extend(req.data, req.body);
+    mongooseModel.updated = new Date();
+    mongooseModel.updateBy = req.user;
     mongooseModel.save(function (err, data) {
         if (err) {
             return res.status(400).send({

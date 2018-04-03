@@ -7,13 +7,16 @@ exports.model = Model;
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ModelSchema = new Schema({
-    name: {
-        type: String,
-        default: '',
-        required: 'Please fill name',
-        unique: true,
-        trim: true
-    }
+    name: String,
+    created: {
+        type: Date,
+        default: Date.now
+    },
+    updated: {
+        type: Date
+    },
+    createBy: {},
+    updateBy: {}
 });
 
 mongoose.model(Model, ModelSchema);
