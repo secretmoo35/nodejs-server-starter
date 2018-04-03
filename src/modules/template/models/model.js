@@ -22,7 +22,7 @@ var ModelSchema = new Schema({
         username: {
             type: String
         },
-        displayname: {
+        displayName: {
             type: String
         }
     },
@@ -33,7 +33,7 @@ var ModelSchema = new Schema({
         username: {
             type: String
         },
-        displayname: {
+        displayName: {
             type: String
         }
     }
