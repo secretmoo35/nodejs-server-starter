@@ -12,21 +12,27 @@ exports.getList = function (req, res) {
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            res.jsonp(datas);
+            res.jsonp({
+                status: 200,
+                data: datas
+            });
         };
     });
 };
 
 exports.create = function (req, res) {
     var mongooseModel = new Model(req.body);
-    mongooseModel.updateBy = req.user;
+    mongooseModel.createby = req.user;
     mongooseModel.save(function (err, data) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            res.jsonp(data);
+            res.jsonp({
+                status: 200,
+                data: data
+            });
         };
     });
 };
@@ -35,6 +41,7 @@ exports.getByID = function (req, res, next, id) {
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(400).send({
+            status: 400,
             message: 'Id is invalid'
         });
     }
@@ -45,27 +52,33 @@ exports.getByID = function (req, res, next, id) {
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            req.data = data;
+            req.data = data ? data : {};
             next();
         };
     });
 };
 
 exports.read = function (req, res) {
-    res.jsonp(req.data);
+    res.jsonp({
+        status: 200,
+        data: req.data ? req.data : []
+    });
 };
 
 exports.update = function (req, res) {
     var mongooseModel = _.extend(req.data, req.body);
     mongooseModel.updated = new Date();
-    mongooseModel.updateBy = req.user;
+    mongooseModel.updateby = req.user;
     mongooseModel.save(function (err, data) {
         if (err) {
             return res.status(400).send({
                 message: errorHandler.getErrorMessage(err)
             });
         } else {
-            res.jsonp(data);
+            res.jsonp({
+                status: 200,
+                data: data
+            });
         };
     });
 };
@@ -78,7 +91,8 @@ exports.delete = function (req, res) {
             });
         } else {
             res.jsonp({
-                status: 200
+                status: 200,
+                data: data
             });
         };
     });

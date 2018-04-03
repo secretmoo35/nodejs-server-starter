@@ -15,8 +15,28 @@ var ModelSchema = new Schema({
     updated: {
         type: Date
     },
-    createBy: {},
-    updateBy: {}
+    createby: {
+        _id: {
+            type: String
+        },
+        username: {
+            type: String
+        },
+        displayname: {
+            type: String
+        }
+    },
+    updateby: {
+        _id: {
+            type: String
+        },
+        username: {
+            type: String
+        },
+        displayname: {
+            type: String
+        }
+    }
 });
 
 mongoose.model(Model, ModelSchema);
