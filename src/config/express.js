@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-glob.sync(path.join(__dirname, '../modules/**/routes/*.route.js')).forEach(function (file) {
+glob.sync(path.join(__dirname, '../modules/**/routes/*.js')).forEach(function (file) {
     require(path.resolve(file))(app);
 });
 

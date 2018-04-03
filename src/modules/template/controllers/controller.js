@@ -1,9 +1,6 @@
 'use strict';
-var glob = require('glob'),
-    path = require('path'),
-    mongoose = require('mongoose'),
-    file = glob.sync(path.join(__dirname, '../models/*.model.js')),
-    _model = require(file[0]).model,
+var mongoose = require('mongoose'),
+    _model = require('../models/model').model,
     Model = mongoose.model(_model),
     errorHandler = require('../../core/controllers/errors.server.controller'),
     _ = require('lodash');

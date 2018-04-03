@@ -13,9 +13,9 @@
 
 1. Copy folder "src/modules/template"
 
-2. Change filename "template" to a new filename.'
+2. Change filename "src/modules/{{template}}" to a new filename.'
 
-3. Change file "src/modules/{{template}}/models/{{template}}.model.js"
+3. Change file "src/modules/{{template}}/models/model.js"
 
 
     var Model = "Template"; // change this to a new module

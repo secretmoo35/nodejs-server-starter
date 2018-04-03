@@ -7,7 +7,8 @@ mongoose();
 
 app.get('/', function (req, res) {
     res.jsonp({
-        status: 200
+        status: 200,
+        message: 'Server is running.'
     });
 });
 
