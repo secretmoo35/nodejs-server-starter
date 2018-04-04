@@ -20,6 +20,49 @@
 
         	var Model = "Template"; // change this to a new module
 
+------
+
+
+**Authentication route**
+
+
+- [POST] "/api/auth/signup"
+
+    	Input {
+			   username:String,
+			   password:String,
+			   firstName:String,
+			   lastName:String,
+			   email:String               
+    	}
+
+    	Output {
+			   status:Number,
+			   token:String 
+    	}
+
+  
+
+- [POST] "/api/auth/signin"
+
+    	Input {
+			   username:String,
+			   password:String         
+    	}
+
+    	Output {
+			   status:Number,
+			   token:String 
+    	}
+
+- [GET] "/api/getuser"
+
+    	Output {
+			   status:Number,
+			   data:User 
+    	}
+
+------
 
 **Reference**
 
@@ -32,8 +75,12 @@
 
 ------
 
-**Log**
-- **03/04/18** 
+**Logs**
+- **03/04/18**  - version 1.0.1
     - Change filename
     - glob require(models & route)
     - express-jwt
+- **04/04/18**  - version 1.0.2
+    - signup
+    - signin
+    - get user
