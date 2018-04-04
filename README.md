@@ -2,12 +2,16 @@
 
 1. npm install
 
+------
+
 #### Run project
 
 1. node server || node server.js || npm start
 
 * Use npm install -g nodemon
 * Run "nodemon server" auto reload.
+
+------
 
 #### Create module
 
@@ -23,7 +27,7 @@
 ------
 
 
-**Authentication route**
+#### Authentication route
 
 
 - [POST] "/api/auth/signup"
@@ -64,7 +68,7 @@
 
 ------
 
-**Reference**
+#### Reference
 
 - **NodeJS:** https://nodejs.org/en/
 - **Express:** https://expressjs.com/
@@ -75,7 +79,7 @@
 
 ------
 
-**Logs**
+#### Logs
 - **03/04/18**  - version 1.0.1
     - Change filename
     - glob require(models & route)
