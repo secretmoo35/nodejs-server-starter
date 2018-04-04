@@ -22,7 +22,7 @@
 3. Change file "src/modules/{{template}}/models/model.js"
 
 
-        	var Model = "Template"; // change this to a new module
+        var Model = "Template"; // change this to a new module
 
 ------
 
