@@ -6,7 +6,7 @@
 
 #### Run project
 
-1. node server || node server.js || npm start
+1. node server || npm start
 
 * Use npm install -g nodemon
 * Run "nodemon server" auto reload.
