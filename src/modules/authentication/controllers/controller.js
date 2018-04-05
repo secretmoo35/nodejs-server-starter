@@ -22,7 +22,7 @@ exports.getList = function (req, res) {
                 data: datas
             });
         };
-    });
+    }).lean();
 };
 
 exports.create = function (req, res) {
