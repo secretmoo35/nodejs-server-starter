@@ -84,10 +84,12 @@
 - **05/04/18**  - version 1.0.3
     - FIX: Access-Control-Allow-Origin
     - FIX: Header authorization token undefiend (cors)
+	
 - **04/04/18**  - version 1.0.2
     - signup
     - signin
     - get user
+	
 - **03/04/18**  - version 1.0.1
     - Change filename
     - glob require(models & route)
