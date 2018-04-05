@@ -32,7 +32,7 @@
 
 - [POST] "/api/auth/signup"
 
-    	Input {
+    	Input: {
 			   username:String,
 			   password:String,
 			   firstName:String,
@@ -40,7 +40,7 @@
 			   email:String               
     	}
 
-    	Output {
+    	Output: {
 			   status:Number,
 			   token:String 
     	}
@@ -49,19 +49,19 @@
 
 - [POST] "/api/auth/signin"
 
-    	Input {
+    	Input: {
 			   username:String,
 			   password:String         
     	}
 
-    	Output {
+    	Output: {
 			   status:Number,
 			   token:String 
     	}
 
 - [GET] "/api/getuser"
 
-    	Output {
+    	Output: {
 			   status:Number,
 			   data:User 
     	}
