@@ -115,8 +115,7 @@ var ModelSchema = new Schema({
 //hashing a password before saving it to the database
 ModelSchema.pre('save', function (next) {
     var user = this;
-    var rounds = (+new Date());
-    var round = parseInt(rounds[rounds - 1]);
+    var round = 13;
     this.salt = bcrypt.genSaltSync(round);
     bcrypt.hash(user.password, this.salt, function (err, hash) {
         if (err) {
@@ -124,7 +123,7 @@ ModelSchema.pre('save', function (next) {
         }
         user.password = hash;
         next();
-    })
+    });
 });
 
 mongoose.model(Model, ModelSchema);
