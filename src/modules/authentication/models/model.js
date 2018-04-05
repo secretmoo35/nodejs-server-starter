@@ -115,9 +115,10 @@ var ModelSchema = new Schema({
 //hashing a password before saving it to the database
 ModelSchema.pre('save', function (next) {
     var user = this;
-    this.salt = (+new Date());
-    var r = parseInt(this.salt[this.salt.length - 1]);
-    bcrypt.hash(user.password, r, function (err, hash) {
+    var rounds = (+new Date());
+    var round = parseInt(rounds[rounds - 1]);
+    this.salt = bcrypt.genSaltSync(round);
+    bcrypt.hash(user.password, this.salt, function (err, hash) {
         if (err) {
             return next(err);
         }
