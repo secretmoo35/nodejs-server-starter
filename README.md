@@ -85,6 +85,7 @@
     - FIX: Access-Control-Allow-Origin
     - FIX: Header authorization token undefiend (cors)
     - CHANGE: Store hash in your password DB.
+    - ADD: Mongoose find().lean() performance.
 	
 - **04/04/18**  - version 1.0.2
     - signup
