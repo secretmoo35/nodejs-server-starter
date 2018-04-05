@@ -1,6 +1,6 @@
 {
   "name": "nodejs-server",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "mongoose express nodejs for server only",
   "main": "server.js",
   "scripts": {

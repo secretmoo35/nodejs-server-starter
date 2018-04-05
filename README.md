@@ -88,3 +88,6 @@
     - signup
     - signin
     - get user
+- **05/04/18**  - version 1.0.3
+    - FIX: Access-Control-Allow-Origin
+    - FIX: Header Authorization token undefiend (cors)
