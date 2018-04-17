@@ -1,5 +1,6 @@
 'use strict';
 var mongoose = require('mongoose'),
+    passport = require('passport'),
     _model = require('../models/model').model,
     Model = mongoose.model(_model),
     errorHandler = require('../../core/controllers/errors.server.controller'),
@@ -22,7 +23,7 @@ exports.getList = function (req, res) {
                 data: datas
             });
         };
-    }).lean();
+    });
 };
 
 exports.create = function (req, res) {
@@ -120,6 +121,7 @@ exports.getUser = function (req, res) {
 /**
  * Signup
  */
+
 exports.signup = function (req, res, next) {
 
     var user = new Model(req.body);
@@ -142,34 +144,23 @@ exports.signup = function (req, res, next) {
 };
 
 /**
- * Signin after passport authentication
+ * Signin
  */
+
 exports.signin = function (req, res, next) {
-    Model.findOne({
-            username: req.body.username
-        })
-        .exec(function (err, user) {
-            if (err) {
-                return callback(err)
-            } else if (!user) {
-                return res.status(401).send({
-                    status: 401,
-                    message: 'User not found.'
-                });
-            }
-            bcrypt.compare(req.body.password, user.password, function (err, result) {
-                if (result === true) {
-                    req.user = user;
-                    next();
-                } else {
-                    return res.status(401).send({
-                        status: 401,
-                        message: 'Password is invalid.'
-                    });
-                }
-            });
-        });
+    passport.authenticate('local', function (err, user, info) {
+        if (err || !user) {
+            res.status(400).send(info);
+        } else {
+            req.user = user;
+            next();
+        }
+    })(req, res, next);
 };
+
+/**
+ * Genarate token
+ */
 
 exports.token = function (req, res) {
     var user = req.user;

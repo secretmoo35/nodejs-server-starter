@@ -68,6 +68,32 @@
 
 ------
 
+#### External authentication route
+
+* Add key & secret key config file "modules/**/strategy/*.js"
+
+- Facebook
+
+		[GET]
+		/api/auth/facebook
+
+- Google
+
+		[GET]
+		/api/auth/google
+
+- LinkedIn
+
+		[GET]
+		/api/auth/linkedin
+
+- twitter
+
+		[GET]
+		/api/auth/twitter
+
+------
+
 #### Reference
 
 - **NodeJS:** https://nodejs.org/en/
@@ -96,3 +122,10 @@
     - Change filename
     - glob require(models & route)
     - express-jwt
+
+- **17/04/18**  - version 1.1.0
+    - CHANGE: authen local use passport
+    - ADD: authen facebook use passport (V.1 Read only)
+    - ADD: authen google use passport (V.1 Read only)
+    - ADD: authen linkedin use passport (V.1 Read only)
+    - ADD: authen twitter use passport (V.1 Read only)

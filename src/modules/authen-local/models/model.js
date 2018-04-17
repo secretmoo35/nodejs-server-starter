@@ -4,9 +4,9 @@ var Model = "User";
 exports.model = Model;
 
 // use model
-var bcrypt = require('bcrypt');
 var validator = require('validator');
 var mongoose = require('mongoose');
+var bcrypt = require('bcrypt');
 var Schema = mongoose.Schema;
 
 var validateLocalStrategyEmail = function (email) {
