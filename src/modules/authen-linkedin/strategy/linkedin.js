@@ -10,8 +10,8 @@ var passport = require('passport'),
 module.exports = function () {
   // Use twitter strategy
   passport.use(new LinkedInStrategy({
-      consumerKey: 'consumerKey',
-      consumerSecret: 'consumerSecret',
+      consumerKey: process.env.LINKEDIN_ID || 'YOUR_ID',
+      consumerSecret: process.env.LINKEDIN_SECRET || 'YOUR_SECRET',
       callbackURL: '/api/auth/linkedin/callback',
       passReqToCallback: true,
       profileFields: ['id', 'first-name', 'last-name', 'email-address', 'picture-url']
@@ -36,7 +36,6 @@ module.exports = function () {
       };
 
       // Save the user OAuth profile
-      return done(null, providerUserProfile);
-      // users.saveOAuthUserProfile(req, providerUserProfile, done);
+      controller.saveOAuthUserProfile(req, providerUserProfile, done);
     }));
 };

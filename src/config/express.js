@@ -1,6 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('./mongoose');
 const app = express();
+
+mongoose();
+
 var glob = require('glob'),
     path = require('path'),
     cors = require('cors'),

@@ -8,5 +8,5 @@ module.exports = function (app) {
             'r_emailaddress'
         ]
     }));
-    app.route('/api/auth/linkedin/callback').get(controller.oauthCallback('linkedin'));
+    app.route('/api/auth/linkedin/callback').get(controller.oauthCallback('linkedin'), controller.token);
 }

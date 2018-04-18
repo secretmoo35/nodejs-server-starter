@@ -8,5 +8,5 @@ module.exports = function (app) {
             'https://www.googleapis.com/auth/userinfo.email'
         ]
     }));
-    app.route('/api/auth/google/callback').get(controller.oauthCallback('google'));
+    app.route('/api/auth/google/callback').get(controller.oauthCallback('google'), controller.token);
 }

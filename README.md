@@ -6,7 +6,7 @@
 
 #### Run project
 
-1. node server || npm start
+1. npm start
 
 * Use npm install -g nodemon
 * Run "nodemon server" auto reload.
@@ -27,7 +27,7 @@
 ------
 
 
-#### Authentication route
+#### Authentication routes
 
 
 - [POST] "/api/auth/signup"
@@ -59,7 +59,7 @@
 			   token:String 
     	}
 
-- [GET] "/api/getuser"
+- [GET] "/api/getuser" (Request header)
 
     	Output: {
 			   status:Number,
@@ -68,9 +68,7 @@
 
 ------
 
-#### External authentication route
-
-* Add key & secret key config file "modules/**/strategy/*.js"
+#### External authentication routes
 
 - Facebook
 
@@ -92,6 +90,15 @@
 		[GET]
 		/api/auth/twitter
 
+- github
+
+		[GET]
+		/api/auth/github
+
+
+		
+**REMARK**  : Add key & secret key config file "modules/**/strategy/*.js"
+
 ------
 
 #### Reference
@@ -106,6 +113,20 @@
 ------
 
 #### Logs
+
+- **18/04/18**  - version 1.2.0
+    - UPDATE: authen facebook use passport (Login & Register)
+    - UPDATE: authen google use passport (Login & Register)
+    - UPDATE: authen linkedin use passport (Login & Register)
+    - UPDATE: authen twitter use passport (Login & Register)
+    - ADD: authen github use passport (Login & Register)
+
+- **17/04/18**  - version 1.1.0
+    - CHANGE: authen local use passport
+    - ADD: authen facebook use passport (V.1 Read only)
+    - ADD: authen google use passport (V.1 Read only)
+    - ADD: authen linkedin use passport (V.1 Read only)
+    - ADD: authen twitter use passport (V.1 Read only)
 
 - **05/04/18**  - version 1.0.3
     - FIX: Access-Control-Allow-Origin
@@ -122,10 +143,3 @@
     - Change filename
     - glob require(models & route)
     - express-jwt
-
-- **17/04/18**  - version 1.1.0
-    - CHANGE: authen local use passport
-    - ADD: authen facebook use passport (V.1 Read only)
-    - ADD: authen google use passport (V.1 Read only)
-    - ADD: authen linkedin use passport (V.1 Read only)
-    - ADD: authen twitter use passport (V.1 Read only)

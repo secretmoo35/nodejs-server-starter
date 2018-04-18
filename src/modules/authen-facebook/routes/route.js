@@ -5,5 +5,5 @@ module.exports = function (app) {
     app.route('/api/auth/facebook').get(controller.oauthCall('facebook', {
         scope: ['email']
     }));
-    app.route('/api/auth/facebook/callback').get(controller.oauthCallback('facebook'));
+    app.route('/api/auth/facebook/callback').get(controller.oauthCallback('facebook'), controller.token);
 }

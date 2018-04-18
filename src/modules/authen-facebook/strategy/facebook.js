@@ -10,8 +10,8 @@ var passport = require('passport'),
 module.exports = function () {
   // Use facebook strategy
   passport.use(new FacebookStrategy({
-      clientID: 'clientID',
-      clientSecret: 'clientSecret',
+      clientID: process.env.FACEBOOK_ID || 'YOUR_ID',
+      clientSecret: process.env.FACEBOOK_SECRET || 'YOUR_SECRET',
       callbackURL: '/api/auth/facebook/callback',
       profileFields: ['id', 'name', 'displayName', 'emails', 'photos'],
       passReqToCallback: true
@@ -37,8 +37,7 @@ module.exports = function () {
 
 
       // Save the user OAuth profile
-      return done(null, providerUserProfile);
-      // users.saveOAuthUserProfile(req, providerUserProfile, done);
+      controller.saveOAuthUserProfile(req, providerUserProfile, done);
 
       function generateUsername(profile) {
         var username = '';

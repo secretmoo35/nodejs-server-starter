@@ -4,24 +4,25 @@
  * Module dependencies.
  */
 var passport = require('passport'),
-  TwitterStrategy = require('passport-twitter').Strategy,
+  GithubStrategy = require('passport-github').Strategy,
   controller = require('../controllers/controller');
 
 module.exports = function () {
-  // Use twitter strategy
-  passport.use(new TwitterStrategy({
-      consumerKey: process.env.TWITTER_ID || 'YOUR_ID',
-      consumerSecret: process.env.TWITTER_SECRET || 'YOUR_SECRET',
-      callbackURL: '/api/auth/twitter/callback'
+  // Use github strategy
+  passport.use(new GithubStrategy({
+      clientID: process.env.GITHUB_ID || 'YOUR_ID',
+      clientSecret: process.env.GITHUB_ID || 'YOUR_SECRET',
+      callbackURL: '/api/auth/github/callback',
+      passReqToCallback: true
     },
-    function (req, token, tokenSecret, profile, done) {
+    function (req, accessToken, refreshToken, profile, done) {
       // Set the provider data and include tokens
       var providerData = profile._json;
-      providerData.token = token;
-      providerData.tokenSecret = tokenSecret;
+      providerData.accessToken = accessToken;
+      providerData.refreshToken = refreshToken;
 
       // Create the user OAuth profile
-      var displayName = profile.displayName.trim();
+      var displayName = profile.displayName ? profile.displayName.trim() : profile.username.trim();
       var iSpace = displayName.indexOf(' '); // index of the whitespace following the firstName
       var firstName = iSpace !== -1 ? displayName.substring(0, iSpace) : displayName;
       var lastName = iSpace !== -1 ? displayName.substring(iSpace + 1) : '';
@@ -30,10 +31,13 @@ module.exports = function () {
         firstName: firstName,
         lastName: lastName,
         displayName: displayName,
+        email: profile.emails[0].value,
         username: profile.username,
-        profileImageURL: profile.photos[0].value.replace('normal', 'bigger'),
-        provider: 'twitter',
-        providerIdentifierField: 'id_str',
+        // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
+        profileImageURL: (providerData.avatar_url) ? providerData.avatar_url : undefined,
+        // jscs:enable
+        provider: 'github',
+        providerIdentifierField: 'id',
         providerData: providerData
       };
 
