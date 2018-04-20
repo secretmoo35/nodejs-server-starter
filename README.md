@@ -8,8 +8,11 @@
 
 1. npm start
 
-* Use npm install -g nodemon
-* Run "nodemon server" auto reload.
+------
+
+#### Run test project
+
+1. npm test
 
 ------
 
@@ -23,6 +26,8 @@
 
 
         var Model = "Template"; // change this to a new module
+
+4. Enjoy!
 
 ------
 
@@ -113,6 +118,11 @@
 ------
 
 #### Logs
+
+- **20/04/18**  - version 1.3.0
+    - PACKAGE: Mocha, Supertest, should
+    - ADD: Test Driven Development(TDD) for authen-local
+    - ADD: Test Driven Development(TDD) for Template
 
 - **18/04/18**  - version 1.2.0
     - UPDATE: authen facebook use passport (Login & Register)
