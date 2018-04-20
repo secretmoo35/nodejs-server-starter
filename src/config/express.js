@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('./mongoose');
 const app = express();
 
-mongoose();
+mongoose.connection();
 
 var glob = require('glob'),
     path = require('path'),
@@ -37,6 +37,13 @@ app.use(session({
     saveUninitialized: true,
     secret: 'secret-session'
 }));
+
+app.get('/', function (req, res) {
+    res.jsonp({
+        status: 200,
+        message: 'Server is running.'
+    });
+});
 
 glob.sync(path.join(__dirname, '../modules/**/routes/*.js')).forEach(function (file) {
     require(path.resolve(file))(app);

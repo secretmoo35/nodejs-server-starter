@@ -1,14 +1,17 @@
 'use strict'
 
 const mongoose = require('mongoose');
-const MONGODB_URI = process.env.MONGO_DB_URI || process.env.MONGODB_URI || "mongodb://localhost/database"
-module.exports = function () {
+
+module.exports.connection = function (cb) {
+    var MONGODB_URI = process.env.MONGO_DB_URI || process.env.MONGODB_URI || process.env.MONGODB_URI_TEST || "mongodb://localhost/database"
     // mongoose.set('debug', process.env.MONGO_DB_URI || process.env.MONGODB_URI ? false : true);
-    let db = mongoose.connect(MONGODB_URI, function (err) {
+    var db = mongoose.connect(MONGODB_URI, function (err) {
         if (err) {
             console.log("MongoDB Notconnected..." + err);
         } else {
-            console.log("MongoDB Connected...");
+            if (!process.env.MONGODB_URI_TEST) {
+                console.log("MongoDB Connected...");
+            }
         }
 
     });
@@ -21,4 +24,16 @@ module.exports = function () {
     });
 
     return db;
+}
+
+module.exports.dropDatabase = function (cb) {
+    mongoose.connection.db.dropDatabase(function () {
+        if (cb) cb()
+    });
+}
+
+module.exports.disconnect = function (cb) {
+    mongoose.disconnect(function () {
+        if (cb) cb()
+    });
 }
