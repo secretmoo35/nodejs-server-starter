@@ -4,23 +4,12 @@ var request = require('supertest'),
     mongoose = require('mongoose'),
     _model = require('../models/model').model,
     app = require('../../../config/express'),
-    mongooseConfig = require('../../../config/mongoose'),
     Model = mongoose.model(_model),
     User = mongoose.model('User');
 
 var item,
     credentials,
     token;
-
-describe(_model + ' mongodb connect', function () {
-
-    it('connected..', function (done) {
-        mongoose.connection.on('connected', function () {
-            done();
-        });
-    });
-
-});
 
 describe(_model + ' CRUD routes tests', function () {
 
@@ -240,16 +229,6 @@ describe(_model + ' CRUD routes tests', function () {
 
     afterEach(function (done) {
         Model.remove().exec(done);
-    });
-
-});
-
-describe(_model + ' mongodb disconnect', function () {
-
-    it('disconnected..', function (done) {
-        mongooseConfig.dropDatabase(function () {
-            mongooseConfig.disconnect(done);
-        });
     });
 
 });
