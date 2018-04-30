@@ -120,7 +120,7 @@
 #### Logs
 
 - **30/04/18**  - version 1.3.1
-    - UPDATE: body-parser
+    - UPDATE: include module body-parser
 
 - **20/04/18**  - version 1.3.0
     - PACKAGE: Mocha, Supertest, should
