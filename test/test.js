@@ -9,9 +9,7 @@ var glob = require('glob'),
 describe('MongoDB connect', function () {
 
     it('connected..', function (done) {
-        mongooseConfig.checkConnection(function () {
-            done();
-        });
+        mongooseConfig.checkConnection(done);
     });
 
 });
