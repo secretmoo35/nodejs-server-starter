@@ -52,5 +52,5 @@ glob.sync(path.join(__dirname, '../modules/**/routes/*.js')).forEach(function (f
 glob.sync(path.join(__dirname, '../modules/**/strategy/*.js')).forEach(function (file) {
     require(path.resolve(file))(app);
 });
-
+ 
 module.exports = app;
