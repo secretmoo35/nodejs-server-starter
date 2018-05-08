@@ -26,6 +26,17 @@ module.exports.connection = function (cb) {
     return db;
 }
 
+module.exports.checkConnection = function (cb) {
+
+    setTimeout(function () {
+        var status = mongoose.connection.readyState;
+        if (status === 1) {
+            if (cb) cb()
+        }
+    }, 1500);
+
+}
+
 module.exports.dropDatabase = function (cb) {
     mongoose.connection.db.dropDatabase(function () {
         if (cb) cb()
