@@ -30,14 +30,11 @@ module.exports.checkConnection = function (cb) {
 
     setTimeout(function () {
         var status = mongoose.connection.readyState;
-        console.log(status);
         if (status === 1) {
             if (cb) cb()
         }
-    }, 1000);
-    // mongoose.connection.on('connected', function () {
-    //     if (cb) cb()
-    // });
+    }, 1500);
+
 }
 
 module.exports.dropDatabase = function (cb) {
