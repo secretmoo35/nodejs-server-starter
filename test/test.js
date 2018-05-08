@@ -7,15 +7,15 @@ var glob = require('glob'),
     mongoose = require('mongoose'),
     mongooseConfig = require('../src/config/mongoose');
 
-describe('MongoDB connect', function () {
+// describe('MongoDB connect', function () {
 
-    it('connected..', function (done) {
-        mongoose.connection.on('connected', function () {
-            done();
-        });
-    });
+//     it('connected..', function (done) {
+//         mongoose.connection.on('connected', function () {
+//             done();
+//         });
+//     });
 
-});
+// });
 
 glob.sync(path.join(__dirname, '../src/modules/**/test/*.js')).forEach(function (file) {
     require(path.resolve(file));
