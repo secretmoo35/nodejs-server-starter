@@ -7,14 +7,18 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:6.11.0
+      - image: circleci/node:9.9.0
+      
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
       - image: circleci/mongo:3.4.4
+
     steps:
       - checkout
-
-      # todo: find nicer solution than constantly "cd"ing to unit_testing
-      - run: npm install
-
-      - run: npm test
-
-      # TODO: add caching to speed things up.
+      - run: 
+          name: Install package
+          command: npm install
+      - run: 
+          name: Test
+          command: npm test
