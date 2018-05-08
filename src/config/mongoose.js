@@ -27,7 +27,12 @@ module.exports.connection = function (cb) {
 }
 
 module.exports.checkConnection = function (cb) {
-    mongoose.connection.on('connected', function () {
+    // var status = mongoose.connection.readyState;
+    // console.log(status);
+    // if(status === 1){
+    //     if (cb) cb()
+    // }
+    mongoose.connection.on('connected', function(){
         if (cb) cb()
     });
 }

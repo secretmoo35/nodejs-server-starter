@@ -22,6 +22,7 @@ describe(_model + ' Model save tests', function () {
     });
 
     it('should be able to save without problems', function (done) {
+        this.timeout(5000);
         var _user = new Model(user);
         _user.save(function (err) {
             should.not.exist(err);
