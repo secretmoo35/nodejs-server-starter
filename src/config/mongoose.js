@@ -27,14 +27,17 @@ module.exports.connection = function (cb) {
 }
 
 module.exports.checkConnection = function (cb) {
-    // var status = mongoose.connection.readyState;
-    // console.log(status);
-    // if(status === 1){
+
+    setTimeout(function () {
+        var status = mongoose.connection.readyState;
+        console.log(status);
+        if (status === 1) {
+            if (cb) cb()
+        }
+    }, 1000);
+    // mongoose.connection.on('connected', function () {
     //     if (cb) cb()
-    // }
-    mongoose.connection.on('connected', function(){
-        if (cb) cb()
-    });
+    // });
 }
 
 module.exports.dropDatabase = function (cb) {

@@ -9,6 +9,7 @@ var glob = require('glob'),
 describe('MongoDB connect', function () {
 
     it('connected..', function (done) {
+        this.timeout(5000);
         mongooseConfig.checkConnection(done);
     });
 
