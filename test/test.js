@@ -4,14 +4,13 @@ process.env.MONGODB_URI_TEST = 'mongodb://localhost/database-test';
 
 var glob = require('glob'),
     path = require('path'),
-    mongoose = require('mongoose'),
     mongooseConfig = require('../src/config/mongoose');
 
 describe('MongoDB connect', function () {
 
     it('connected..', function (done) {
         this.timeout(0);
-        mongoose.connection.on('connected', function () {
+        mongooseConfig.checkConnection(function () {
             done();
         });
     });

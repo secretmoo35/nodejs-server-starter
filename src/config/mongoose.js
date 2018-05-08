@@ -26,6 +26,12 @@ module.exports.connection = function (cb) {
     return db;
 }
 
+module.exports.checkConnection = function (cb) {
+    mongoose.connection.on('connected', function () {
+        if (cb) cb()
+    });
+}
+
 module.exports.dropDatabase = function (cb) {
     mongoose.connection.db.dropDatabase(function () {
         if (cb) cb()
