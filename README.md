@@ -119,6 +119,10 @@
 
 #### Logs
 
+- **10/05/18**  - version 1.4.0
+    - ADD: Circleci config
+    - FIX: TDD - Remove user model
+
 - **30/04/18**  - version 1.3.1
     - UPDATE: include module body-parser
 

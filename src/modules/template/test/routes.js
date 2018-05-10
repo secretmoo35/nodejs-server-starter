@@ -228,7 +228,9 @@ describe(_model + ' CRUD routes tests', function () {
     });
 
     afterEach(function (done) {
-        Model.remove().exec(done);
+        User.remove().exec(function () {
+            Model.remove().exec(done);
+        });
     });
 
 });
