@@ -32,9 +32,9 @@ module.exports = function () {
                         return done(null, user);
                         next();
                     } else {
-                        return res.status(401).send({
+                        return done(null, false, {
                             status: 401,
-                            message: 'Password is invalid.'
+                            message: 'Username or Password is invalid.'
                         });
                     }
                 });

@@ -1,6 +1,6 @@
 {
   "name": "nodejs-server",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "mongoose express nodejs for server only",
   "main": "server.js",
   "scripts": {
@@ -8,7 +8,13 @@
     "test": "mocha"
   },
   "keywords": [
-    "nodejs-server"
+    "nodejs-server",
+    "nodejs",
+    "node",
+    "express",
+    "mongodb",
+    "mongoose",
+    "api"
   ],
   "author": "sarayut.kungsaranuwat@gmail.com",
   "license": "MIT",
