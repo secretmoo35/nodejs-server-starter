@@ -119,6 +119,9 @@
 
 #### Logs
 
+- **16/05/18**  - version 1.4.1
+    - FIX: Login local
+
 - **10/05/18**  - version 1.4.0
     - ADD: Circleci config
     - FIX: TDD - Remove user model
