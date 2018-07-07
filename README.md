@@ -119,6 +119,9 @@
 
 #### Logs
 
+- **07/07/18**  - version 1.4.2
+    - FIX: Deploy port "process.env.PORT"
+
 - **16/05/18**  - version 1.4.1
     - FIX: Login local
 
