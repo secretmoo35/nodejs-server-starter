@@ -18,13 +18,13 @@ exports.getUser = (req, res) => {
       });
     } else {
       req.user = data;
-      req.user.password = undefined;
-      req.user.salt = undefined;
-      req.user.loginToken = undefined;
-      req.user.loginToken = jwt.sign(_.omit(req.user, "password"), secretJwt, {
-        expiresIn: 2 * 60 * 60 * 1000
-      });
-      req.user.loginExpires = Date.now() + 2 * 60 * 60 * 1000; // 2 hours
+      req.user.loginToken = jwt.sign(
+        {
+          data: req.user
+        },
+        secretJwt,
+        { expiresIn: 60 * 60 }
+      );
       res.jsonp({
         status: 200,
         data: req.user
@@ -85,7 +85,7 @@ exports.token = (req, res) => {
     {
       data: user
     },
-    "secret",
+    secretJwt,
     { expiresIn: 60 * 60 }
   );
   res.jsonp({
