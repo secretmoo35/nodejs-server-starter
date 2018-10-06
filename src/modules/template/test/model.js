@@ -1,28 +1,27 @@
-'use strict';
-var should = require('should'),
-    mongoose = require('mongoose'),
-    _model = require('../models/model').model,
-    Model = mongoose.model(_model);
+"use strict";
+let should = require("should"),
+  mongoose = require("mongoose"),
+  _model = require("../models/model").model,
+  Model = mongoose.model(_model);
 
-var item;
+let item;
 
-describe(_model + ' Model save tests', function () {
+describe(_model + " Model save tests", () => {
+  before(done => {
+    item = {
+      name: "name"
+    };
+    done();
+  });
 
-    before(function (done) {
-        item = {
-            name: 'name'
-        };
+  it("should be able to save without problems", done => {
+    let _item = new Model(item);
+    _item.save(err => {
+      should.not.exist(err);
+      _item.remove(err => {
+        should.not.exist(err);
         done();
+      });
     });
-
-    it('should be able to save without problems', function (done) {
-        var _item = new Model(item);
-        _item.save(function (err) {
-            should.not.exist(err);
-            _item.remove(function (err) {
-                should.not.exist(err);
-                done();
-            });
-        });
-    });
+  });
 });

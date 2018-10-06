@@ -1,44 +1,44 @@
-'use strict';
+"use strict";
 
-var Model = "Template";
+let Model = "Template";
 exports.model = Model;
 
 // use model
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var ModelSchema = new Schema({
-    name: {
-        type: String
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
+let ModelSchema = new Schema({
+  name: {
+    type: String
+  },
+  created: {
+    type: Date,
+    default: Date.now
+  },
+  updated: {
+    type: Date
+  },
+  createby: {
+    _id: {
+      type: String
     },
-    created: {
-        type: Date,
-        default: Date.now
+    username: {
+      type: String
     },
-    updated: {
-        type: Date
-    },
-    createby: {
-        _id: {
-            type: String
-        },
-        username: {
-            type: String
-        },
-        displayName: {
-            type: String
-        }
-    },
-    updateby: {
-        _id: {
-            type: String
-        },
-        username: {
-            type: String
-        },
-        displayName: {
-            type: String
-        }
+    displayName: {
+      type: String
     }
+  },
+  updateby: {
+    _id: {
+      type: String
+    },
+    username: {
+      type: String
+    },
+    displayName: {
+      type: String
+    }
+  }
 });
 
 mongoose.model(Model, ModelSchema);

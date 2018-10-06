@@ -1,104 +1,104 @@
-'use strict';
-var mongoose = require('mongoose'),
-    _model = require('../models/model').model,
-    Model = mongoose.model(_model),
-    errorHandler = require('../../core/controllers/errors.server.controller'),
-    _ = require('lodash');
+"use strict";
+let mongoose = require("mongoose"),
+  _model = require("../models/model").model,
+  Model = mongoose.model(_model),
+  errorHandler = require("../../core/controllers/errors.server.controller"),
+  _ = require("lodash");
 
-exports.getList = function (req, res) {
-    Model.find(function (err, datas) {
-        if (err) {
-            return res.status(400).send({
-                status: 400,
-                message: errorHandler.getErrorMessage(err)
-            });
-        } else {
-            res.jsonp({
-                status: 200,
-                data: datas
-            });
-        };
-    }).lean();
-};
-
-exports.create = function (req, res) {
-    var mongooseModel = new Model(req.body);
-    mongooseModel.createby = req.user;
-    mongooseModel.save(function (err, data) {
-        if (err) {
-            return res.status(400).send({
-                status: 400,
-                message: errorHandler.getErrorMessage(err)
-            });
-        } else {
-            res.jsonp({
-                status: 200,
-                data: data
-            });
-        };
-    });
-};
-
-exports.getByID = function (req, res, next, id) {
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(400).send({
-            status: 400,
-            message: 'Id is invalid'
-        });
+exports.getList = (req, res, next) => {
+  Model.find((err, datas) => {
+    if (err) {
+      return res.status(400).send({
+        status: 400,
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      req.data = datas;
+      next();
     }
-
-    Model.findById(id, function (err, data) {
-        if (err) {
-            return res.status(400).send({
-                status: 400,
-                message: errorHandler.getErrorMessage(err)
-            });
-        } else {
-            req.data = data ? data : {};
-            next();
-        };
-    });
+  }).lean();
 };
 
-exports.read = function (req, res) {
-    res.jsonp({
-        status: 200,
-        data: req.data ? req.data : []
-    });
+exports.create = (req, res, next) => {
+  let mongooseModel = new Model(req.body);
+  mongooseModel.createby = req.user;
+  mongooseModel.save((err, data) => {
+    if (err) {
+      return res.status(400).send({
+        status: 400,
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      req.data = data;
+      next();
+    }
+  });
 };
 
-exports.update = function (req, res) {
-    var mongooseModel = _.extend(req.data, req.body);
-    mongooseModel.updated = new Date();
-    mongooseModel.updateby = req.user;
-    mongooseModel.save(function (err, data) {
-        if (err) {
-            return res.status(400).send({
-                status: 400,
-                message: errorHandler.getErrorMessage(err)
-            });
-        } else {
-            res.jsonp({
-                status: 200,
-                data: data
-            });
-        };
+exports.getByID = (req, res, next, id) => {
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).send({
+      status: 400,
+      message: "Id is invalid"
     });
+  }
+
+  Model.findById(id, (err, data) => {
+    if (err) {
+      return res.status(400).send({
+        status: 400,
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      req.data = data ? data : {};
+      next();
+    }
+  });
 };
 
-exports.delete = function (req, res) {
-    req.data.remove(function (err, data) {
-        if (err) {
-            return res.status(400).send({
-                status: 400,
-                message: errorHandler.getErrorMessage(err)
-            });
-        } else {
-            res.jsonp({
-                status: 200,
-                data: data
-            });
-        };
-    });
+exports.update = (req, res, next) => {
+  let mongooseModel = _.extend(req.data, req.body);
+  mongooseModel.updated = new Date();
+  mongooseModel.updateby = req.user;
+  mongooseModel.save((err, data) => {
+    if (err) {
+      return res.status(400).send({
+        status: 400,
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      req.data = data;
+      next();
+    }
+  });
+};
+
+exports.delete = (req, res, next) => {
+  req.data.remove((err, data) => {
+    if (err) {
+      return res.status(400).send({
+        status: 400,
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      req.data = data;
+      next();
+    }
+  });
+};
+
+exports.returnData = (req, res) => {
+  // object
+  res.jsonp({
+    status: 200,
+    data: req.data
+  });
+};
+
+exports.returnDatas = (req, res) => {
+  // array
+  res.jsonp({
+    status: 200,
+    datas: req.data
+  });
 };

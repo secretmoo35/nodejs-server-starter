@@ -25,7 +25,7 @@
 3. Change file "src/modules/{{template}}/models/model.js"
 
 
-        var Model = "Template"; // change this to a new module
+        let Model = "Template"; // change this to a new module
 
 4. Enjoy!
 
@@ -102,7 +102,7 @@
 
 
 		
-**REMARK**  : Add key & secret key config file "modules/**/strategy/*.js"
+**REMARK**  : Add key & secret key configs file "modules/**/strategy/*.js"
 
 ------
 
@@ -118,6 +118,10 @@
 ------
 
 #### Logs
+
+- **06/10/18**  - version 2.0.0
+    - UPDATE: Arrow function
+	- REMOVE: package express-jwt
 
 - **07/07/18**  - version 1.4.2
     - FIX: Deploy port "process.env.PORT"
@@ -165,4 +169,3 @@
 - **03/04/18**  - version 1.0.1
     - Change filename
     - glob require(models & route)
-    - express-jwt

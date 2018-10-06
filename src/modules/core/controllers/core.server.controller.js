@@ -1,9 +1,22 @@
-'use strict';
+"use strict";
 
-var jwt = require('express-jwt');
-var secret = 'secret key token with jwt';
+let jwt = require("jsonwebtoken");
+
+let secret = "secret key token with jwt";
 exports.secretJwt = secret;
-exports.jwtCheck = jwt({
-    secret: secret,
-    credentialsRequired: false
-});
+
+exports.jwtCheck = (req, res, next) => {
+  let token = req.headers.authorization
+    ? req.headers.authorization.split("Bearer ")
+    : "";
+  jwt.verify(token[1], secret, function(err, decoded) {
+    if (err) {
+      return res.status(403).json({
+        message: "User is not authorized"
+      });
+    } else {
+      req.user = decoded.data;
+      next();
+    }
+  });
+};
