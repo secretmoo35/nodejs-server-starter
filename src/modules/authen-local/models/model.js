@@ -69,7 +69,7 @@ let ModelSchema = new Schema({
     type: [
       {
         type: String,
-        enum: ["user", "shop", "admin"]
+        enum: ["user", "admin"]
       }
     ],
     default: ["user"],

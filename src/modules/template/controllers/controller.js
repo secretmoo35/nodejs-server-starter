@@ -91,7 +91,7 @@ exports.returnData = (req, res) => {
   // object
   res.jsonp({
     status: 200,
-    data: req.data
+    data: req.data || {}
   });
 };
 
@@ -99,6 +99,6 @@ exports.returnDatas = (req, res) => {
   // array
   res.jsonp({
     status: 200,
-    datas: req.data
+    datas: req.data || []
   });
 };
