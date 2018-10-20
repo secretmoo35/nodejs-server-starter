@@ -1,3 +1,9 @@
+# Install project
+
+Now: nodejs-server have a cli generate. :)
+
+https://www.npmjs.com/package/nodejs-server-generate
+
 #### Install project
 
 1. npm install
