@@ -162,7 +162,7 @@ describe(_model + " Authentication routes tests", () => {
           return done(err);
         }
         request(app)
-          .get("/api/getuser")
+          .get("/api/user")
           .set("Authorization", "Bearer " + res.body.token)
           .expect(200)
           .end((err, res) => {
