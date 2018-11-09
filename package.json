@@ -1,6 +1,6 @@
 {
   "name": "nodejs-server",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "mongoose express nodejs for server only",
   "main": "server.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "author": "sarayut.kungsaranuwat@gmail.com",
   "license": "MIT",
   "dependencies": {
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^3.0.2",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "express": "^4.16.3",

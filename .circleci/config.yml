@@ -2,8 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:7
-      - image: circleci/mongo:3.6
+      - image: circleci/node:latest
+      - image: circleci/mongo:latest
 
     steps:
       - checkout

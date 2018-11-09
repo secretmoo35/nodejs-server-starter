@@ -70,7 +70,7 @@ https://www.npmjs.com/package/nodejs-server-generate
 			   token:String 
     	}
 
-- [GET] "/api/getuser" (Request header)
+- [GET] "/api/user" (Request header)
 
     	Output: {
 			   status:Number,
@@ -124,6 +124,9 @@ https://www.npmjs.com/package/nodejs-server-generate
 ------
 
 #### Logs
+
+- **09/11/18**  - version 2.0.1
+    - FIX: bcrypt
 
 - **06/10/18**  - version 2.0.0
     - UPDATE: Arrow function
