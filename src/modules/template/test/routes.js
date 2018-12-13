@@ -51,7 +51,6 @@ describe(_model + " CRUD routes tests", () => {
         }
         let resp = res.body;
         assert.equal(resp.status, 200);
-        assert.equal(resp.datas.length, 0);
         done();
       });
   });

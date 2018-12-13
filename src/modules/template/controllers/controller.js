@@ -87,18 +87,9 @@ exports.delete = (req, res, next) => {
   });
 };
 
-exports.returnData = (req, res) => {
-  // object
+exports.return = (req, res) => {
   res.jsonp({
     status: 200,
-    data: req.data || {}
-  });
-};
-
-exports.returnDatas = (req, res) => {
-  // array
-  res.jsonp({
-    status: 200,
-    datas: req.data || []
+    data: req.data
   });
 };

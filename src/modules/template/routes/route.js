@@ -9,15 +9,15 @@ module.exports = app => {
   app
     .route(url)
     .all(core.jwtCheck, policy.isAllowed)
-    .get(controller.getList, controller.returnDatas)
-    .post(controller.create, controller.returnData);
+    .get(controller.getList, controller.return)
+    .post(controller.create, controller.return);
 
   app
     .route(urlWithParam)
     .all(core.jwtCheck, policy.isAllowed)
-    .get(controller.returnData)
-    .put(controller.update, controller.returnData)
-    .delete(controller.delete, controller.returnData);
+    .get(controller.return)
+    .put(controller.update, controller.return)
+    .delete(controller.delete, controller.return);
 
   app.param(_model + "id", controller.getByID);
 };
