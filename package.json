@@ -27,7 +27,7 @@
     "glob": "^7.1.2",
     "jsonwebtoken": "7.4.3",
     "lodash": "^4.17.5",
-    "mongoose": "5.0.12",
+    "mongoose": "5.7.7",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-github": "^1.1.0",
